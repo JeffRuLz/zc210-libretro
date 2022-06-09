@@ -109,7 +109,8 @@ else ifeq ($(platform), ctr)
    CC = $(DEVKITARM)/bin/arm-none-eabi-gcc$(EXE_EXT)
    CXX = $(DEVKITARM)/bin/arm-none-eabi-g++$(EXE_EXT)
    AR = $(DEVKITARM)/bin/arm-none-eabi-ar$(EXE_EXT)
-   CFLAGS += -D_3DS -DARM11 -march=armv6k -mtune=mpcore -mfloat-abi=hard
+   CFLAGS += -D_3DS -DARM11 -DUSE_CTRULIB_2 -I$(DEVKITPRO)/libctru/include -march=armv6k -mtune=mpcore -mfloat-abi=hard -marm -mfpu=vfp -mtp=soft
+   CXXFLAGS := $(CFLAGS)
    STATIC_LINKING = 1
 # Nintendo Switch (libnx)
 else ifeq ($(platform), libnx)
